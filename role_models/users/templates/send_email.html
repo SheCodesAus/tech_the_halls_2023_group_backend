@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Send email !</title>
+</head>
+<body>
+    <header style="text-align: center;"><h1>Send activation mail to Users</h1></header>
+    <div style="text-align: center;">
+        <!-- <h4>User details</h4> -->
+        <form method="POST" action="{% url 'send_email' %}">
+            {% csrf_token %}
+            <!-- <input type="text" name="name" placeholder="Title of email" required> -->
+            <br><br>
+            <!-- <input type="email" name="email" placeholder="Email of Users" required> -->
+            <br><br>
+            <!-- <textarea name="message" placeholder="Message for users" required></textarea> -->
+            <br><br>
+            <button class="" type="submit">SEND</button>
+            <br><br>
+        </form>
+    </div>
+</body>
+</html>

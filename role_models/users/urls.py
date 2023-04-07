@@ -15,4 +15,7 @@ urlpatterns = [
     path('questions/<int:pk>', views.QuestionDetail.as_view(), name='questions-detail'),
 
     path('users-answers/', views.AnswerList.as_view(), name='quetions-answers'),
+
+    path('send-email/', views.send_email, name='send_email'),
+
 ]

@@ -1,12 +1,18 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import Http404
 from rest_framework import status, permissions, generics, filters
-from rest_framework.views import APIView
+from rest_framework.views import APIView , View
 from rest_framework.response import Response
 from .permissions import  IsOwnerOrReadOnly, IsAdminOnly
 from .serializers import CustomUserSerializer, CustomUserDetailSerializer, CategorySerializer, CustomUserCategorySerializer
 from .serializers import QuestionSerializer, AnswerSerializer
 from .models import CustomUser, Category, Question, Answer
+
+from django.core.mail import send_mail
+from django.conf import settings
+
+from django.contrib.auth import get_user_model
+from django.shortcuts import render, redirect
 
 # Create your views here.
 class CustomUserList(generics.ListCreateAPIView):
@@ -88,3 +94,15 @@ class CustomUserDetail(APIView):
             return Response(status=status.HTTP_202_ACCEPTED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+def send_email(request):  
+    if request.method == 'POST':
+        # message = request.POST['message']
+        # email = request.POST['email']
+        # name = request.POST['name']
+        send_mail(
+        'Welcome Mail From Tech-Diversity.com',
+        'Welcome to our website. You are part of our community and you can create profiles of women and non-Binary Folk. You could share this website to show young people that anyone can work in tech.',
+        'settings.EMAIL_HOST_USER',
+        ['yotevo9234@dogemn.com','balakvign@gmail.com'],#Receivers email address
+        fail_silently=False)
+    return render(request, 'send_email.html')
