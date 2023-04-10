@@ -97,12 +97,12 @@ class CustomUserDetail(APIView):
 def send_email(request):  
     if request.method == 'POST':
         # message = request.POST['message']
-        # email = request.POST['email']
-        # name = request.POST['name']
+        email = request.POST['email']
+        name = request.POST['name']
         send_mail(
-        'Welcome Mail From Tech-Diversity.com',
-        'Welcome to our website. You are part of our community and you can create profiles of women and non-Binary Folk. You could share this website to show young people that anyone can work in tech.',
+        'Check this out!',
+        'Welcome to tech Diversity.   Your friend  ' +name + ' has shared a link with you. Click on https://warm-creponne-806b0e.netlify.app ',
         'settings.EMAIL_HOST_USER',
-        ['yotevo9234@dogemn.com','balakvign@gmail.com'],#Receivers email address
+        ['yotevo9234@dogemn.com',email],#Receivers email address
         fail_silently=False)
     return render(request, 'send_email.html')

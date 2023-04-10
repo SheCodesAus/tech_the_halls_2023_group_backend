@@ -7,14 +7,14 @@
     <title>Send email !</title>
 </head>
 <body>
-    <header style="text-align: center;"><h1>Send activation mail to Users</h1></header>
+    <header style="text-align: center;"><h1>Refer a friend</h1></header>
     <div style="text-align: center;">
-        <!-- <h4>User details</h4> -->
+        <h4>Share the love for tech. Simply share with your friend!</h4>
         <form method="POST" action="{% url 'send_email' %}">
             {% csrf_token %}
-            <!-- <input type="text" name="name" placeholder="Title of email" required> -->
+            <input type="text" name="name" placeholder="Your Name" required>
             <br><br>
-            <!-- <input type="email" name="email" placeholder="Email of Users" required> -->
+            <input type="email" name="email" placeholder="Email of Friend" required>
             <br><br>
             <!-- <textarea name="message" placeholder="Message for users" required></textarea> -->
             <br><br>
